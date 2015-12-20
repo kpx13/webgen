@@ -66,7 +66,13 @@
                                 </li>
                                 
                                 <li class="dropdown {% if 'portfolio' in request_url %} active {% endif %}">
-                                    <a href="/portfolio/">Мои работы</a>
+                                    <a href="/works/">Мои работы</a>
+                                    <ul class="dropdown-menu">
+                                        {% for a in works_r %}
+                                            <li><a href="/portfolio/{{ a.slug }}">{{ a.title }}</a></li>
+                                        {% endfor %}
+                                        <li><a href="/portfolio/">= Много простых сайтов =</a></li>
+                                    </ul>
                                 </li>
                                 
                                 <li class="dropdown {% if 'order' in request_url %} active {% endif %}">
@@ -82,6 +88,11 @@
 
                                 <li class="dropdown {% if 'articles' in request_url %} active {% endif %}">
                                     <a href="/articles/">Информация</a>
+                                    <ul class="dropdown-menu">
+                                        {% for a in articles_r %}
+                                            <li><a href="/articles/{{ a.slug }}">{{ a.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
                                 </li>
 
                                 <li class="dropdown {% if 'about' in request_url %} active {% endif %}">

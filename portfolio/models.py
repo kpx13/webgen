@@ -43,6 +43,8 @@ class Work(models.Model):
     slug = models.SlugField(verbose_name=u'slug', unique=True, blank=True)
     tags = TaggableManager(through=WorkTaggedItem, blank=True)
     date = models.DateField(verbose_name=u'дата выполнения проекта', blank=True)
+    show = models.BooleanField(verbose_name=u'показывать в моих работах', default=False, blank=True)
+
     
     class Meta:
         verbose_name = u'работа'
@@ -57,27 +59,7 @@ class Work(models.Model):
             self.slug=pytils.translit.translify(self.title).lower().replace(' ', '-').replace('\'', '')
         super(Work, self).save(*args, **kwargs)
         
-    @staticmethod
-    def get_by_slug(slug):
-        try:
-            return Work.objects.get(slug=slug)
-        except:
-            return None
-        
-    @staticmethod
-    def get_recent(count=3):
-        return list(Work.objects.all().order_by('-date')[:count])
-    
-    @staticmethod
-    def get_best(count=3):
-        return list(Work.objects.all()[:count])
-    
-    @staticmethod
-    def get_by_tag(tag=None):
-        if not tag:
-            return []
-        else:
-            return list(Work.objects.filter(tags__slug__in=[tag]))
+
         
 class Image(models.Model):
     work = models.ForeignKey(Work, verbose_name=u'работа', related_name='image')

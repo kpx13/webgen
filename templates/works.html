@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Создание и продвижение сайтов на заказ | Статьи{% endblock %}
+
+{% block head %}
+    <script src="/static/js/portfolio/jquery.quicksand.js"></script>
+    <script src="/static/js/portfolio/setting.js"></script>
+    <!-- Portfolio hover -->
+    <script src="/static/js/hover/jquery-hover-effect.js"></script>
+    <script src="/static/js/hover/setting.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <!-- fav and touch icons -->
+{% endblock %}
+
+{% block breadcrumb %}
+        <section id="breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <ul class="breadcrumb notop">
+                            <li><a href="/">Главная</a><span class="divider">/</span></li>
+                            <li class="active">Статьи</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <ul class="portfolio-area da-thumbs">
+            {% for w in works %}
+                <li class="portfolio-item" data-id="id-{{ w.id }}" data-type="web">
+                    <div class="span6">
+                        <div class="thumbnail">
+                            <div class="image-wrapp">
+                                <a href='/portfolio/{{ w.slug }}'><img src="/media/{{ w.image.all.0.image }}" alt="{{ w.title }}" /></a>
+                                <article class="da-animate da-slideFromRight" style="display: block;">
+                                <h4>{{ w.title }}</h4>
+                                
+                                <span>
+                                    <a class="zoom" href="/portfolio/{{ w.slug }}">
+                                        <i class="icon-rounded icon-48 icon-zoom-in"></i>
+                                    </a>
+                                </span>
+                                {% if w.href %}
+                                    <a href="{{ w.href }}" target='_blank'><i class="icon-rounded icon-48 icon-link"></i></a>
+                                {% endif %}
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

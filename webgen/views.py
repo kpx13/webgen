@@ -13,43 +13,49 @@ from request.forms import RequestForm
 from pages.models import Page
 from portfolio.models import Work
 from blog.models import Article
-from slideshow.models import Slider
 
 def get_common_context(request):
     c = {}
     c['request_url'] = request.path
-    c['works_r'] = Work.get_recent(4)
-    c['works_b'] = Work.get_best(4)
-    c['articles_r'] = Article.objects.all()
+    c['works_r'] = Work.objects.filter(show=True)
+    c['articles_r'] = Article.objects.filter(show=True)
     c['is_debug'] = settings.DEBUG
     c.update(csrf(request))
     return c
 
+
+def page(request, page_name):
+    c = get_common_context(request)
+    c['page'] = get_object_or_404(Page, slug=page_name)
+    return render_to_response('page.html', c, context_instance=RequestContext(request))
+
 def home_page(request):
     c = get_common_context(request)
     c['request_url'] = 'home'
-    c['slideshow'] = Slider.get_slideshow()
-    c['page'] = Page.get_by_slug('home')
+    c['page'] = get_object_or_404(Page, slug='home')
     return render_to_response('home.html', c, context_instance=RequestContext(request))
 
 def portfolio_page(request, curr_work=None):
     c = get_common_context(request)
     if curr_work:
-        c['curr_work'] = Work.get_by_slug(curr_work)
+        c['curr_work'] = get_object_or_404(Work, slug=curr_work)
         return render_to_response('portfolio_work.html', c, context_instance=RequestContext(request))
     else:
-        c['tags'] = []
         c['works'] = Work.objects.all()
         return render_to_response('portfolio.html', c, context_instance=RequestContext(request))
 
+def works(request):
+    c = get_common_context(request)
+    c['works'] = Work.objects.filter(show=True)
+    return render_to_response('works.html', c, context_instance=RequestContext(request))
+
 def articles_page(request, curr_work=None):
     c = get_common_context(request)
-    c['tags'] = []
     if curr_work:
-        c['curr_article'] = Article.get_by_slug(curr_work)
+        c['curr_article'] = get_object_or_404(Article, slug=curr_work)
         return render_to_response('article.html', c, context_instance=RequestContext(request))
     else:
-        c['articles'] = Article.objects.all()
+        c['articles'] = Article.objects.filter(show=True)
         return render_to_response('articles.html', c, context_instance=RequestContext(request))
 
 def order_page(request):
@@ -73,31 +79,23 @@ def order_page(request):
         else:
             c['request_form'] = form
             messages.error(request, u'При обработке формы произошла ошибка.')
-    c['page'] = Page.get_by_slug('order')
+    c['page'] = get_object_or_404(Page, slug='order')
     return render_to_response('request.html', c, context_instance=RequestContext(request))
 
-def page(request, page_name):
-    c = get_common_context(request)
-    c['page'] = get_object_or_404(Page, slug=page_name)
-    return render_to_response('page.html', c, context_instance=RequestContext(request))
 
 def about_page(request):
     c = get_common_context(request)
-    c['page'] = Page.get_by_slug('about')
+    c['page'] = get_object_or_404(Page, slug='about')
     return render_to_response('about.html', c, context_instance=RequestContext(request))
 
 def contacts_page(request):
     c = get_common_context(request)
-    c['page'] = Page.get_by_slug('contacts')
+    c['page'] = get_object_or_404(Page, slug='contacts')
     return render_to_response('contacts.html', c, context_instance=RequestContext(request))
-
-def services_page(request):
-    c = get_common_context(request)
-    return render_to_response('services.html', c, context_instance=RequestContext(request))
 
 def umi_page(request):
     c = get_common_context(request)
-    c['page'] = Page.get_by_slug('umi')
+    c['page'] = get_object_or_404(Page, slug='umi')
     return render_to_response('umi.html', c, context_instance=RequestContext(request))
     
 def handle_file(f):

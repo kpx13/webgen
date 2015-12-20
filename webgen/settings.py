@@ -34,7 +34,6 @@ INSTALLED_APPS = [
 
     'pages',
     'request',
-    'slideshow',
     'portfolio',
     'blog',
 ]

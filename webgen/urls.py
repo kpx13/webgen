@@ -18,11 +18,11 @@ urlpatterns = [
 
     url(r'^$' , views.home_page, name='home'),
     url(r'^order/$' , views.order_page, name='order'),
-    url(r'^services/$' , views.services_page, name='services'),
     url(r'^about/$' , views.about_page, name='about'),
     url(r'^contacts/$' , views.contacts_page, name='contacts'),
     url(r'^portfolio/$' , views.portfolio_page, name='portfolio'),
     url(r'^articles/$' , views.articles_page, name='articles'),
+    url(r'^works/$' , views.works, name='works'),
     url(r'^portfolio/(?P<curr_work>[\w-]+)/$' , views.portfolio_page, name='work'),
     url(r'^articles/(?P<curr_work>[\w-]+)/$' , views.articles_page, name='article'),
     url(r'^(?P<page_name>[\w-]+)/$' , views.page, name='page'),
