@@ -1,24 +1,29 @@
-"""webgen URL Configuration
+# -*- coding: utf-8 -*-
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.9/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
-Including another URLconf
-    1. Add an import:  from blog import urls as blog_urls
-    2. Import the include() function: from django.conf.urls import url, include
-    3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
-"""
-from django.conf.urls import url
+from django.conf.urls import patterns, include, url
 from django.contrib import admin
-import pages.views
+from filebrowser.sites import site
+from django.conf.urls.static import static
+admin.autodiscover()
+
+import settings
+import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^(?P<page_name>[\w-]+)/$' , pages.views.page, name='page'),
-]
+    url(r'^admin/filebrowser/', include(site.urls)),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/jsi18n/', 'django.views.i18n.javascript_catalog'),
+    #url(r'^ckeditor/', include('ckeditor.urls')),
+
+    url(r'^$' , views.home_page, name='home'),
+    url(r'^order/$' , views.order_page, name='order'),
+    url(r'^services/$' , views.services_page, name='services'),
+    url(r'^about/$' , views.about_page, name='about'),
+    url(r'^contacts/$' , views.contacts_page, name='contacts'),
+    url(r'^portfolio/$' , views.portfolio_page, name='portfolio'),
+    url(r'^articles/$' , views.articles_page, name='articles'),
+    url(r'^portfolio/(?P<curr_work>[\w-]+)/$' , views.portfolio_page, name='work'),
+    url(r'^articles/(?P<curr_work>[\w-]+)/$' , views.articles_page, name='article'),
+    url(r'^(?P<page_name>[\w-]+)/$' , views.page, name='page'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
