@@ -2,6 +2,19 @@
 
 {% block setting %}{% endblock %}
 
+{% block head %}
+        <style type="text/css">
+            .circle {
+                width: 237px;
+                height: 237px;
+                border-radius: 118px;
+                -webkit-border-radius: 118px;
+                -moz-border-radius: 118px;
+                background: url('/static/img/me.png') no-repeat;
+            }
+        </style>
+{% endblock %}
+
 {% block scripts %}
 <!--         <script src="/static/js/jquery.elastislide.js"></script> -->
         <script src="/static/js/jquery.flexslider.js"></script>
@@ -15,225 +28,138 @@
 {% block breadcrumb %}{% endblock %}
 
 {% block slider %}
-    <section id="intro">
-        <div class="jumbotron masthead">
+    <section id="subintro">
+        <div class="jumbotron subhead" id="overview">
             <div class="container">
-                <!-- slider navigation -->
-                <div class="sequence-nav">
-                    <div class="prev">
-                        <span></span>
-                    </div>
-                    <div class="next">
-                        <span></span>
-                    </div>
+               <div class="row">
+                <div class="span3">
+                    <div class="circle"></div>
                 </div>
-                <!-- end slider navigation -->
-                <div class="row">
-                    <div class="span12">
-                        <div id="slider_holder">
-                            <div id="sequence">
-                                <ul>
-                                    {% for s in slideshow %}
-                                    <li>
-                                        <div class="info animate-in">
-                                            <h2>{{ s.title }}</h2>
-                                            <br>
-                                            <h3>{{ s.subtitle }}</h3>
-                                            <p>{{ s.description }}</p>
-                                            {{ s.link|safe }}
-                                            
-                                        </div>
-                                        <img class="slider_img animate-in" src="/media/{{ s.image }}" alt="" />
-                                    </li>
-                                   {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Sequence Slider::END-->
-                    </div>
+                <div class="span9">
+                   <p class="lead">            
+                        Здравствуйте! Меня зовут Аня, я &mdash; программист, занимаюсь крупными интересными веб-проектами (интернет-стартапами или внутренними корпоративными). Нахожусь в Москве. Могу работать с юридическими и физическими лицами (есть ИП). Рассматриваю заказы на проекты только с бюджетом от 100 тыс. рублей, а так же беру мелкие задачи по программированию, например, парсеры. Готова к сотрудничеству за&nbsp;% в бизнесе. Ищу постоянную удалённую работу или в Москве. Получила высшее техническое образование по специальности "Разработка ПО" в МГТУ им. Баумана.                 
+                    </p>
+                    
                 </div>
+            </div>
             </div>
         </div>
     </section>
 {% endblock %}
 
-
 {% block content %}
-        
         <div class="row">
-		<div class="span12">
-                	<div class="well">
-	                    <div class="centered">            
-				<h1 style='text-transform: uppercase'>Компания больше не занимается сайтами!</h1>
-			    </div>
-			</div>
-		</div>
+    		<div class="span8">
+                <h2>Если вам нужен простой сайт</h2>
+                <p>Я зарабатываю фрилансом с 2011 года. За это время я сделала много сайтов, их вы можете посмотреть в портфолио. На моём опыте всем нужно почти одно и то же: лендинги, сайты-визитки да интернет-магазины. Решения для 95% задач уже есть. Скорее всего, и вам не нужно ничего такого, для чего нужен программист. Если так, то послушайте что я вам скажу.</p>
+                <p>Если вы хотите сделать максимально простой сайт, за минимальное количество денег и времени, то вы должны понимать что он не будет уникальным и брендированным. В этом случае ищите готовые решения, например используйте umicms или wix или генераторы лендингов. Такой сайт вам обойдётся в копейки.</p>
+                <p>Если вам нужен обязательно уникальный дизайн, но функционала у сайта особого не ожидается, то вам подойдёт какая-нибудь CMS. Вы можете обратиться к веб-дизайнеру, чтобы он прорисовал все страницы, а потом к веб-мастеру, который работает с CMSками, которых много для разных задач. Работа по "натягиванию" дизайна на CMS не будет дорого стоить. Для визитки это тысяч 5, для интернет-магазина 10, примерно так. Выбирайте CMS по популярности и цене. Вам не нужно и здесь привлекать программиста, такую работу могут выполнять верстальщики, она требует меньшей квалификации. </p>
+                <p>Делать типовые решения на своём движке &mdash; стрелять из пушки по воробьям. Поэтому я за последние 2 года постепенно перешла с создания простых сайтов на создание сложных веб-проектов с бюджетом на программирование от 100 тыс. рублей. </p>
+                <hr />
+    		</div>
             <div class="span4">
-                <div class="well">
-                    <div class="centered">
-                        <i class="icon-circled icon-64 icon-leaf active"></i>
-                        <h4>Логотипы / Фирменный стиль</h4>
-                        <div class="dotted_line">
-                        </div>
-                        <p>
-                            Создание собственного фирменного стиля является очень важным этапом для представления Вашего бизнеса на рынке. По-другому это называется "брендбук", т.е. "книга бренда".<br />
-                            <a href='/services/#firstil'>Подробнее &raquo;</a><br />
-                        </p>
+                <aside>
+                    <div class="widget">
+                        <h4>Контакты:</h4>
+                        <ul>
+                            <li>
+                                <label><strong>Телефон: </strong></label>
+                                <p>+7 (926) 836 12 36</p>
+                            </li>
+                            <li>
+                                <label><strong>Email: </strong></label>
+                                <a href='mailto: anna@webgenesis.ru' target='_blank'>anna@webgenesis.ru</a>
+                            </li>
+                            <li>
+                                <label><strong>Часы работы: </strong></label>
+                                <p>ПН-ВС 11:00-21:00</p>
+                            </li>
+                            <li>
+                                <label><strong>Адрес: </strong></label>
+                                <p>г. Москва, Кутузовский проезд, 16</p>                            
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-            
-            <div class="span4">
-                <div class="well">
-                    <div class="centered">
-                        <i class="icon-circled icon-64 icon-suitcase active"></i>
-                        <h4>Создание сайтов</h4>
-                        <div class="dotted_line">
-                        </div>
-                        <p>
-                            Основной профиль нашей компании - создание сайтов различной сложности под ключ. Разработка происходит на собственном движке, поэтому мы не ограничены возможностями определенной cms. А это значит, что можем реализовать любой необходимый функционал.<br />
-                            <a href='/services/#sites'>О типах сайтов и ценах &raquo;</a><br />
-                            <a href='/portfolio/'>Сайты в портфолио &raquo;</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="span4">
-                <div class="well">
-                    <div class="centered">
-                        <i class="icon-circled icon-64 icon-coffee active"></i>
-                        <h4>Поддержка / Продвижение</h4>
-                        <div class="dotted_line">
-                        </div>
-                        <p>
-                            Поисковое продвижение - это необходимая часть рекламы в интернете. Наиболее оптимизированный сайт появляется выше в выдаче поисковых систем, а значит, более эффективен и приносит больше клиентов.<br />
-                            <a href='/services/#poddepgka'>Подробнее о поддержке и продвижении &raquo;</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="home-posts">
-                <div class="span12">
-                    <h3>Лучшие работы</h3>
-                </div>
-                {% for w in works_b %}
-                <div class="span3">
-                    <div class="post-image">
-                        <a href="/portfolio/{{ w.slug }}">
-                        <img src="/media/{{ w.image.all.0.image }}" alt="" />
-                        </a>
-                    </div>
-                    <!-- end .entry-meta -->
-                    <div>
-                        <a href="/portfolio/{{ w.slug }}">
-                        <h5 class="title">{{ w.title }}</h5>
-                        </a>
-                        <p>{{ w.desc }}</p>
-                        <a href='http://{{ w.href }}/' target='_blank'> Перейти на сайт {{ w.href }} &raquo;</a><br />
-                        <a href='/portfolio/{{ w.slug }}' class='btn btn-color btn-small'>Подробнее &raquo;</a>
-                    </div>
-                    <!-- end .entry-body -->
-                    <div class="clear">
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    
-        <div class="row">
-            <div class='span12'>
-                <h1>Наши тарифы на создание сайтов:</h1>
-            </div>
-            
-            <div class="span4">
-                <div class="priceBox">
-                    <h4 class="light">Простой</h4>
-                    <hr>
-                    <span class="emphasis">от 15 000 руб. <em>за проект</em></span>
-                    <hr>
-                    <span><b>Сайт-визитка</b></span>
-<hr>
-                    <span>Дизайн на основе шаблона с доработками под Ваш фирменный стиль</span>
-                    <hr>
-                    <span>Собственный движок на django</span>
-      
-                    <hr>
-                    <span>Домен на год</span>
-<hr>
-                    <span>Почта, Веб-аналитика</span>
-<hr>
-                    <span>Размещение на сервере</span>
-                    <hr>
-                    <span class="emphasis-2"><a class="btn btn-success" href="/services/#sites">Подробнее</a></span>
-                </div>
-            </div>
-            <div class="span4">
-                <div class="priceBox special">
-                    <h4 class="light">Стандартный</h4>
-                   <hr>
-                    <span class="emphasis">от 30 000 руб. <em>за проект</em></span>
-                    <hr>
-                    <span><b>Сайт-визитка + Каталог + Дополнительные функции</b></span>
-                    <hr>
-                    <span>Собственный движок на django</span>
-                    <hr>
-                    <span>Уникальный дизайн</span>
-                    <hr>
-                    <span>Домен на год</span>
-<hr>
-                    <span>Почта, Веб-аналитика</span>
-<hr>
-                    <span>Размещение на сервере</span>
-<hr>
-                    <span>Скидка на продвижение и рекламу</span>
-                    <hr>
-                    <span class="emphasis-2"><a class="btn btn-success" href="/services/#sites">Подробнее</a></span>
-                </div>
-            </div>
-            <div class="span4">
-                <div class="priceBox">
-                    <h4 class="light">Интернет-Магазин или Стартап</h4>
-                    <hr>
-                    <span class="emphasis">от 45 000 руб. <em>за проект</em></span>
-                    <hr>
-                    <span><b>Интернет-магазин или дргуой проект с регистрацией пользователей</b></span>
-                     <hr>
-                    <span>Собственный движок на django</span>
-                    <hr>
-                    <span>Уникальный дизайн</span>
-                    <hr>
-                    <span>Домен на год</span>
-<hr>
-                    <span>Почта, Веб-аналитика</span>
-<hr>
-                    <span>Размещение на сервере</span>
-<hr>
-                    <span>Скидка на услуги по дизайну</span>
-<hr>
-                    <span>Скидка на продвижение и рекламу</span>
-                    <hr>
-                    <span class="emphasis-2"><a class="btn btn-success" href="/services/#sites">Подробнее</a></span>
-                </div>
+                
+                </aside>
             </div>
         </div>
 
+        <div class="row">
+            <div class="span12">
+                <h2>Если вам нужен сложный проект</h2>
+            </div>
+            <div class="span6">
+                <div>
+                    <h4>Какие технологии я использую:</h4>
+                    <ul>
+                        <li>язык программирования <b>python</b></li>
+                        <li>проекты, в которых больше подходит реляционная модель данных, делаю с помощью фреймворка <b>django</b> + <b>MySQL</b>/<b>PostgreSQL</b> (в зависимости от бизнес-логики и необходимого функционала)</li>
+                        <li>в ином случае делаю на <b>tornado</b> + <b>mongoDB</b> (стоит дороже)</li>
+                        <li>в качестве поискового движка использую <b>elastic search</b></li>
+                        <li>разворачиваю проекты на машинах с <b>debian</b>-подобными ОС; сервер <b>nginx</b></li>
+                        <li>использую <b>memcached</b>, <b>rabbitmq</b>, supervisor, fabriq</li>
+                        <li>автоматизация тестирования веб-приложений с помощью <b>selenium</b></li>
+                        <li>конечно же, git, github, jenkins</li>
+                        <li>для платежей на сайтах добавляю сервис "Робокасса"</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span6">
+                <div>
+                    <h4>Что я знаю и умею:</h4>
+                    <p>Я имею хорошую алгоритмическую подготовку, в том числе по алгоритмам искуственного интеллекта, постоянно углубляю знания Поэтому я возьмусь с привеликим удовольствием за задачи такого рода:</p>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <p>знакома с основами т.н. <b>high load</b>: использую memcached, rabbit, репликации, шардингw</p>
+                </div>
+            </div>
+        </div>
         
         <div class="row">
             <div class="span12">
-                <div class="tagline centered">
+                <div class="tagline">
                     <div class="row">
                         <div class="span12">
                             <div class="tagline_text">
-                                <h2>Как узнать стоимость работ и сроки?</h2>
-                                <p>
-                                    Для того, чтобы мы могли точно определить стоимость выполняемых работ и сроки, Вам необходимо заполнить бриф <br /> и/или проконсультироваться с менеджером про проектам Марией, она подробно расскажет о формате работы.
-                                </p>
+                                <h2 class="centered">Порядок работ</h2>
+                                <div class="row">
+                                    <div class="span6">
+                                        <h4>Программирование</h4>
+                                        <p>Бекенд (+ Фронтенд) в проектах, ТЗ обязательно</p>
+                    <p>или скрипты</p>
+                                        <p>
+                                            Для того, чтобы я могла оцинить стоимость работ и сроки, вы можете заполнить бриф и прислать его мне по почте или через форму заказа и/или позвонить мне по телефону.
+                                        </p>
+                                        <ol>
+                                            <li>Клиент заполняет бриф (Бриф можно скачать в зеленом блоке ниже).</li>
+                                            <li>Мы связываемся с клиеном, согласовываем детали, объявляем цену и сроки.</li>
+                                            <li>Если необходим договор, заключаем.</li>
+                                            <li>Получение предоплаты.</li>
+                                            <li>Составляем ТЗ, если это необходимо.</li>
+                                            <li>Дизайн. Сюда включается логотип, если его нет.</li>
+                                            <li>Утверждение дизайна. Если по схеме 1, то вторая часть оплаты.</li>
+                                            <li>Вёрстка.</li>
+                                            <li>Утверждение вёрстки.</li>
+                                            <li>Программирование. Выкладывание на хостинг. Тестирование.</li>
+                                            <li>Утверждение сайта.</li>
+                                            <li>Полная оплата работы.</li>
+                                            <li>Выкладывание на хостинг клиета и прикрепление домена.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="span6">
+                                        <h4>Проект под ключ</h4>
+                                        <p></p>
+                                        <p>ТЗ не обязательно/ Требование: самому понимать что нужно/</p>
+                                    </div>
+                                </div>
+                                
+                                <br />
                             </div>
-                            <div class="btn-toolbar cta">
+                            <div class="btn-toolbar cta centered">
 <a class="btn btn-large btn-color" href="/media/brief.doc" target='_blank'>
                                 <i class="icon-file icon-white"></i> Бриф </a>
 <a class="btn btn-large btn-color" href="/media/dogovor.docx">

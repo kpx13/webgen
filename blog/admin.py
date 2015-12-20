@@ -8,4 +8,3 @@ class ArticleAdmin(admin.ModelAdmin):
     ordering = ('date', )
 
 admin.site.register(models.Article, ArticleAdmin)
-admin.site.register(models.ArticleTag)

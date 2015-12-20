@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load thumbnail %}
+
 {% block title %}Создание и продвижение сайтов на заказ | Портфолио{% endblock %}
 
 {% block head %}
@@ -16,7 +16,7 @@
                     <div class="span12">
                         <div class="centered">
                             <h3>Портфолио</h3>
-                            <p>Здесь представлены сайты под ключ, выполненные нашей командой.</p>
+                            <p>Здесь представлены простые сайты до 2014 года.</p>
                         </div>
                     </div>
                 </div>
@@ -42,34 +42,27 @@
         
 
 {% block content %}  
-    
+    <div class="well">
+        <p>Здесь представлены некоторые работы с 2012 по 2014 год: лендинги, сайты-визитки, интернет-магазины.</p>
+        <p>Программная часть почти во всех проектах проста и одинакова, они различаются только по дизайну. Так что будь тут в портфолио хоть 30 сайтов, хоть 130, разницы почти никакой, ибо каждый следующий по программной части не отличается от предыдущего. Это скорее портфолио моих дизайнеров. </p>
+        <p>Не стоит выбирать программиста по красивости сайтов. Не надо так делать, это ошибка. Надо смотреть на функционал приложений, а не на внешний вид. Один крупный проект из раздела "Мои работы" скажет обо мне как о программисте намного больше, чем все эти красивые уникальные дизайны. </p>
+        <p>Внешний вид &mdash; работа дизайнеров. Вы можете найти своего, портфолио которого вам понравится и устроит цена, можете работать с одним из моих. А можно вообще делать веб-проекты (особенно прототипы) без дизайна, на готовом шаблоне.</p>
+        <p>В общем, я оставила эту страницу просто для истории. Не обращайте на неё слишком много внимания.</p>
+    </div>
+
     <div class="container clearfix" id="main-content">
         <div class="row-fluid">
-            <div class="filter-box clearfix"><span id="filter">Filter<i class="icon-sort"></i></span>
-                <ul class='sort' id="option">
-                    <li><a class="active" href="#" data-filter="*">Все</a></li>
-                    {% for t in tags %}
-                        <li><a href="#" data-filter=".{{ t.slug }}">{{ t.name }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-            
-            <!--gallery with lightbox add class lightbox to gallery class-->
             <ul class="gallery lightbox three_col clearfix">
                 {% for w in works %}
                     <li class="{% for t in w.tags.all %} {{ t.slug }}  {% endfor %} "> 
                         <a class="hover" href="/portfolio/{{ w.slug }}">
-                        {% thumbnail w.image.all.0.image "x500" as im %}
-                            <img src="{{ im.url }}" alt="" />
-                        {% endthumbnail %}
+                            <img src="/media/{{ w.image.all.0.image }}" alt="{{ w.name }}" />
                         </a>
                     </li>
                 {% endfor %}
                
             </ul>
         </div>
-        <!--close row-fluid--> 
-        
     </div>
     <!--close .container role="main-content" --> 
 

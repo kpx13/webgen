@@ -12,6 +12,7 @@ SECRET_KEY = '9kex8ea0_*@otr(%kilb$=rje1x^8)nkxrg#!-pcib8u__#ezp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+THUMBNAIL_DEBUG = True
 
 ALLOWED_HOSTS = []
 

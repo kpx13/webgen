@@ -29,8 +29,9 @@ class Article(models.Model):
     date = models.DateField(verbose_name=u'дата')
     text = RichTextField(verbose_name=u'текст')
     desc = models.CharField(max_length=512, verbose_name=u'сокращенный текст')
-    tags = TaggableManager(through=ArticleTaggedItem)
+    tags = TaggableManager(through=ArticleTaggedItem, blank=True)
     slug = models.SlugField(verbose_name=u'slug', unique=True, blank=True, help_text=u'Заполнять не нужно')
+    image = models.ImageField(upload_to='uploads/items', max_length=256, blank=True, verbose_name=u'изображение')
    
     class Meta:
         verbose_name = u'статья'

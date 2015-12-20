@@ -5,8 +5,7 @@
         <title>{% block title %} Создание и продвижение сайтов на заказ {% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
-        <meta name="author" content="">
-	<meta name='yandex-verification' content='69c08a1848fff2ff' />
+        <meta name="author" content="Анна Крханбарова">
         <!-- styles -->
         <link href="/static/css/bootstrap.css" rel="stylesheet">
         <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
@@ -44,8 +43,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="/static/ico/apple-touch-icon-57-precomposed.png">
-        
-        
+
         {% block head %}
         {% endblock %}
         
@@ -67,20 +65,10 @@
                                     <a href="/">Главная</a>
                                 </li>
                                 
-                                <li class="dropdown {% if 'services' in request_url %} active {% endif %}">
-                                    <a href="/services/">Услуги и Цены</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="/services/#logitipy">Логотипы</a></li>
-                                        <li><a href="/services/#firstil">Фирменный стиль</a></li>
-                                        <li><a href="/services/#sites">Разработка сайтов</a></li>
-                                        <li><a href="/services/#poddepgka">Поддержка и сопровождение</a></li>
-                                        <li><a href="/services/#prodvigenie">Продвижение</a></li>
-                                        <li><a href="/services/#souchreditelstvo">Соучредительство</a></li>
-                                    </ul>
-                                </li>
                                 <li class="dropdown {% if 'portfolio' in request_url %} active {% endif %}">
-                                    <a href="/portfolio/">Портфолио</a>
+                                    <a href="/portfolio/">Мои работы</a>
                                 </li>
+                                
                                 <li class="dropdown {% if 'order' in request_url %} active {% endif %}">
                                     <a href="/order/">Как заказать</a>
                                     <ul class="dropdown-menu">
@@ -91,13 +79,13 @@
                                         <li><a href="/order/#zakaz">Сделать заказ</a></li>
                                     </ul>
                                 </li>
-                                
-                                <li class="dropdown {% if 'about' in request_url %} active {% endif %}">
-                                    <a href="/about/">О компании</a>
+
+                                <li class="dropdown {% if 'articles' in request_url %} active {% endif %}">
+                                    <a href="/articles/">Информация</a>
                                 </li>
-                                
-                                <li class="dropdown {% if 'contacts' in request_url %} active {% endif %}">
-                                    <a href="/contacts/">Контакты</a>
+
+                                <li class="dropdown {% if 'about' in request_url %} active {% endif %}">
+                                    <a href="/about/">Обо мне</a>
                                 </li>
                             </ul>
                             <div style='clear: both'></div>
@@ -222,12 +210,12 @@
                     <div class="row">
                         <div class="span6">
                             <p>
-                                &copy; WebGenesis 2013 - Все права соблюдены
+                                &copy; WebGenesis 2013 - 2016 - Все права соблюдены
                             </p>
                         </div>
                         <div class="span6">
                             <p class="pull-right">
-                                Сделано в студии <a href="http://webgenesis.ru">WebGenesis</a>
+                                Сделано мной.
                             </p>
                         </div>
                     </div>

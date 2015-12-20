@@ -1,0 +1,10 @@
+<aside>
+    <div class="widget">
+        <h4>Все статьи</h4>
+        <ul class="cat">
+            {% for a in articles_r %}
+                <li><a href="/articles/{{ a.slug }}">{{ a.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</aside>

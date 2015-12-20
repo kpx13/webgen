@@ -11,7 +11,7 @@ import pytils
 
 from request.forms import RequestForm
 from pages.models import Page
-from portfolio.models import Work, WorkTag
+from portfolio.models import Work
 from blog.models import Article
 from slideshow.models import Slider
 
@@ -20,7 +20,7 @@ def get_common_context(request):
     c['request_url'] = request.path
     c['works_r'] = Work.get_recent(4)
     c['works_b'] = Work.get_best(4)
-    c['articles_r'] = Article.get_recent(4)
+    c['articles_r'] = Article.objects.all()
     c['is_debug'] = settings.DEBUG
     c.update(csrf(request))
     return c
@@ -38,12 +38,13 @@ def portfolio_page(request, curr_work=None):
         c['curr_work'] = Work.get_by_slug(curr_work)
         return render_to_response('portfolio_work.html', c, context_instance=RequestContext(request))
     else:
-        c['tags'] = WorkTag.get_work_tags()
+        c['tags'] = []
         c['works'] = Work.objects.all()
         return render_to_response('portfolio.html', c, context_instance=RequestContext(request))
 
 def articles_page(request, curr_work=None):
     c = get_common_context(request)
+    c['tags'] = []
     if curr_work:
         c['curr_article'] = Article.get_by_slug(curr_work)
         return render_to_response('article.html', c, context_instance=RequestContext(request))

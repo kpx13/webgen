@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^admin/filebrowser/', include(site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^admin/jsi18n/', 'django.views.i18n.javascript_catalog'),
+    #url(r'^admin/jsi18n/', 'django.views.i18n.javascript_catalog'),
     #url(r'^ckeditor/', include('ckeditor.urls')),
 
     url(r'^$' , views.home_page, name='home'),
