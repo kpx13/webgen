@@ -1,0 +1,8 @@
+django
+Pillow
+sorl-thumbnail
+django-ckeditor
+django-filebrowser
+django-admin-tools
+pytils
+django-taggit
