@@ -38,7 +38,11 @@
             <div class="span12">
                 <ul class="breadcrumb notop">
                     <li><a href="/">Главная</a><span class="divider">/</span></li>
-                    <li><a href="/portfolio">Портфолио</a><span class="divider">/</span></li>
+                    {% if curr_work.show %}
+                        <li><a href="/works">Мои работы</a><span class="divider">/</span></li>
+                    {% else %}
+                        <li><a href="/portfolio">Старое портфолио</a><span class="divider">/</span></li>
+                    {% endif %}
                     <li class="active">{{ curr_work.title }}</li>
                 </ul>
             </div>

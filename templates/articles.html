@@ -42,9 +42,11 @@
                         <ul class="post-meta">
                             <li class="first"><i class="icon-calendar"></i><span>{{ a.date }}</span></li>
                             <!--<li><i class="icon-list-alt"></i><span><a href="#">3 comments</a></span></li>-->
+                            {% if a.tags.all|length %}
                             <li class="last"><i class="icon-tags"></i> <span>
                                 {% for t in a.tags.all %} <a href="/articles/tag/{{ t.id }}">{{t}}</a>{% if not forloop.last %}, {% endif %}  {% endfor %}
                             </span></li>
+                            {% endif %}
                         </ul>
                         <div class="clearfix">
                         </div>
