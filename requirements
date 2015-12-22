@@ -5,3 +5,4 @@ django-ckeditor==5.0.2
 django-filebrowser==3.6.1
 django-admin-tools==0.7.1
 pytils==0.3
+django-taggit==0.17

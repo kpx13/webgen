@@ -26,4 +26,4 @@ urlpatterns = [
     url(r'^portfolio/(?P<curr_work>[\w-]+)/$' , views.portfolio_page, name='work'),
     url(r'^articles/(?P<curr_work>[\w-]+)/$' , views.articles_page, name='article'),
     url(r'^(?P<page_name>[\w-]+)/$' , views.page, name='page'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

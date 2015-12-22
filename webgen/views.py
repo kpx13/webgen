@@ -17,7 +17,7 @@ from blog.models import Article
 def get_common_context(request):
     c = {}
     c['request_url'] = request.path
-    c['works_r'] = Work.objects.filter(show=True)
+    c['works_r'] = Work.objects.filter(show=True)[:4]
     c['articles_r'] = Article.objects.filter(show=True)
     c['is_debug'] = settings.DEBUG
     c.update(csrf(request))
@@ -41,7 +41,7 @@ def portfolio_page(request, curr_work=None):
         c['curr_work'] = get_object_or_404(Work, slug=curr_work)
         return render_to_response('portfolio_work.html', c, context_instance=RequestContext(request))
     else:
-        c['works'] = Work.objects.all()
+        c['works'] = Work.objects.filter(show=False)
         return render_to_response('portfolio.html', c, context_instance=RequestContext(request))
 
 def works(request):

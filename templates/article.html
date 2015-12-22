@@ -35,7 +35,6 @@
             {% endif %}
             <ul class="post-meta">
                 <li class="first"><i class="icon-calendar"></i><span>{{ curr_article.date }}</span></li>
-                {{ curr_article.tags.all|length }}
                 {% if curr_article.tags.all|length %}
                     <li class="last"><i class="icon-tags"></i><span>{% for t in curr_article.tags.all %} <a href="/articles/tag/{{ t.id }}">{{t}}</a>{% if not forloop.last %}, {% endif %}  {% endfor %}</span></li>
                 {% endif %}

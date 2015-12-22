@@ -1,1 +1,1 @@
-python manage.py dumpdata pages slideshow portfolio request > dump____.json
+python manage.py dumpdata pages portfolio blog request > dump____.json
