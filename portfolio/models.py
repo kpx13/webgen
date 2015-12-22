@@ -1,39 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from ckeditor.fields import RichTextField
-from taggit.managers import TaggableManager
-from taggit.models import Tag, TaggedItem
 import pytils
-
-
-class WorkTag(Tag):
-    class Meta:
-        proxy = True
-    
-    def slug_(self):
-        return pytils.translit.slugify(self.name)
-    
-    def slugify(self, tag, i=None):
-        slug = tag.lower().replace(' ', '-')
-        if i is not None:
-            slug += '-%d' % i
-        return pytils.translit.slugify(slug)
-    
-    @staticmethod
-    def get_work_tags():
-        list = []
-        for wt in WorkTag.objects.all():
-            if len(Work.objects.filter(tags__slug__in=[wt.slug])) > 0:
-                list.append(wt)
-        return list
-
-class WorkTaggedItem(TaggedItem):
-    class Meta:
-        proxy = True
-
-    @classmethod
-    def tag_model(cls):
-        return WorkTag
 
 class Work(models.Model):
     title = models.CharField(max_length=256, verbose_name=u'заголовок')
@@ -41,10 +8,8 @@ class Work(models.Model):
     desc = models.TextField(blank=True, verbose_name=u'описание')
     order = models.SmallIntegerField(blank=True, default=0, verbose_name=u'порядок')
     slug = models.SlugField(verbose_name=u'slug', unique=True, blank=True)
-    tags = TaggableManager(through=WorkTaggedItem, blank=True)
     date = models.DateField(verbose_name=u'дата выполнения проекта', blank=True)
     show = models.BooleanField(verbose_name=u'показывать в моих работах', default=False, blank=True)
-
     
     class Meta:
         verbose_name = u'работа'

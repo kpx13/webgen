@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.context_processors import csrf
 from django.core.mail import EmailMessage
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 import pytils
@@ -22,7 +22,6 @@ def get_common_context(request):
     c['is_debug'] = settings.DEBUG
     c.update(csrf(request))
     return c
-
 
 def page(request, page_name):
     c = get_common_context(request)
@@ -67,12 +66,13 @@ def order_page(request):
         if form.is_valid():
             form.save()
             data = form.cleaned_data
-	    if u'Клиентские базы' not in data['name']:
-	    	message= u'Имя: ' + data['name'] + u"\n" + u'email: ' + data['email'] + '\n' + u'Телефон: ' + data['phone'] + '\n' + u'Текст: ' + data['comment'] + '\n'
-            	email = EmailMessage(u'Новое сообщение с сайта', message, settings.EMAIL_HOST_USER, settings.REQUEST_SEND_TO)
-            	file = request.FILES.get('brief')
-            	if file: email.attach_file(handle_file(file))
-            	email.send()
+            if u'Клиентские базы' not in data['name']:
+                message= u'Имя: ' + data['name'] + u"\n" + u'email: ' + data['email'] + '\n' + u'Телефон: ' + data['phone'] + '\n' + u'Текст: ' + data['comment'] + '\n'
+                email = EmailMessage(u'Новое сообщение с сайта', message, settings.EMAIL_HOST_USER, settings.REQUEST_SEND_TO)
+                file = request.FILES.get('brief')
+                if file:
+                    email.attach_file(handle_file(file))
+                email.send()
 
             messages.success(request, u'Ваш запрос отправлен.')
             return HttpResponseRedirect('/')

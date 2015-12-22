@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'filebrowser',
     'sorl.thumbnail',
-    'taggit',
 
     'pages',
     'request',
