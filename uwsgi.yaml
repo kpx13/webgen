@@ -3,7 +3,7 @@ uwsgi:
     pythonpath: /home/ann/webgen
     virtualenv: /home/ann/webgen/env/
     env: DJANGO_SETTINGS_MODULE=webgen.settings
-    module: wsgi
+    module: webgen.wsgi
     processes: 2
     threads: 4
 

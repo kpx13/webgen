@@ -16,7 +16,7 @@ SECRET_KEY = '9kex8ea0_*@otr(%kilb$=rje1x^8)nkxrg#!-pcib8u__#ezp'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['webgenesis.ru', '178.132.200.67', '127.0.0.1']
+ALLOWED_HOSTS = ['webgenesis.ru', '178.132.200.66', '178.132.200.67', '127.0.0.1']
 
 
 # Application definition
