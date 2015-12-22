@@ -11,10 +11,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '9kex8ea0_*@otr(%kilb$=rje1x^8)nkxrg#!-pcib8u__#ezp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-THUMBNAIL_DEBUG = True
+#DEBUG = True
+#THUMBNAIL_DEBUG = True
 
-ALLOWED_HOSTS = []
+DEBUG = False
+
+ALLOWED_HOSTS = ['webgenesis.ru', '178.132.200.67', '127.0.0.1']
 
 
 # Application definition

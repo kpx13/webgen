@@ -1,0 +1,17 @@
+uwsgi:
+    socket: /var/tmp/webgen_uwsgi.sock
+    pythonpath: /home/ann/webgen
+    virtualenv: /home/ann/webgen/env/
+    env: DJANGO_SETTINGS_MODULE=webgen.settings
+    module: wsgi
+    processes: 2
+    threads: 4
+
+    daemonize: /home/ann/webgen/logs/uwsgi.log
+    max-requests: 1000
+    buffer-size: 32768
+    harakiri: 60
+    reload-mercy: 8
+    master: 1
+    no-orphans: 1
+    touch-reload: /home/ann/webgen/uwsgi
