@@ -4,14 +4,16 @@ uwsgi:
     virtualenv: /home/ann/webgen/env/
     env: DJANGO_SETTINGS_MODULE=webgen.settings
     module: webgen.wsgi
-    processes: 2
-    threads: 4
+    processes: 1
+
+    threads: 3
 
     daemonize: /home/ann/webgen/logs/uwsgi.log
-    max-requests: 1000
+    max-requests: 5000
     buffer-size: 32768
-    harakiri: 60
+    harakiri: 20
     reload-mercy: 8
     master: 1
     no-orphans: 1
     touch-reload: /home/ann/webgen/uwsgi
+    vacuum=True

@@ -13,30 +13,6 @@ jQuery(document).ready(function($) {
     });	
 	
 	
-	// Create the dropdown base
-	$("<select />").appendTo("nav");
-	// Create default option "Go to..."
-	$("<option />", {
-		"selected": "selected",
-		"value"   : "",
-		"text"    : "Go to..."
-	}).appendTo("nav select");
-      
-	// Populate dropdown with menu items
-	$("nav a").each(function() {
-		var el = $(this);
-		$("<option />", {
-		"value"   : el.attr("href"),
-		"text"    : el.text()
-		}).appendTo("nav select");
-	});
-
-	// To make dropdown actually work
-	// To make more unobtrusive: http://css-tricks.com/4064-unobtrusive-page-changer/
-	$("nav select").change(function() {
-		window.location = $(this).find("option:selected").val();
-	});
-	
 	$("a[data-pretty^='prettyPhoto']").prettyPhoto();
 	$(".gallery:first a[data-pretty^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'pp_default',slideshow:3000, autoplay_slideshow: false});
 	$(".gallery:gt(0) a[data-pretty^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
